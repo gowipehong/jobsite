@@ -8,8 +8,8 @@
 <div class="flex justify-between m-3">
     <button class="btn btn-outline btn-info w-30 normal-case">NEXT Jobs DB</button>
     <div>
-        <button class="btn btn-outline btn-info mr-3 normal-case" href="/users/new">Post a Job</button>
-        <a class="btn btn-outline btn-info normal-case">Log In</a>
+        <a class="btn btn-outline btn-info mr-3 normal-case" href="/users/new">Post a Job</a>
+        <button class="btn btn-outline btn-info normal-case">Log In</button>
     </div>
 </div>
 
