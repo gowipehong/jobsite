@@ -1,9 +1,34 @@
 <script>
-  import "../app.css";
+  import "../app.css"
+  import humanize from 'humanize-plus'
+  
+  export let data
 </script>
 
-<h1 class="text-3xl font-bold underline">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<a href="/about">About my site</a>
-<button class="btn">Button</button>
-<span class="badge">Badge</span>
+<div class="flex justify-between m-3">
+    <button class="btn btn-outline btn-info w-30 normal-case">NEXT Jobs DB</button>
+    <div>
+        <button class="btn btn-outline btn-info mr-3 normal-case" href="/users/new">Post a Job</button>
+        <a class="btn btn-outline btn-info normal-case">Log In</a>
+    </div>
+</div>
+
+<h1 class="text-center text-xl font-bold mb-10">Find Your Next Job</h1>
+
+<div class="overflow-x-auto w-full flex flex-wrap flex-row justify-evenly">
+    {#each data.jobs as job}
+        <div class="border rounded-xl p-5 m-5 w-1/4">
+            <div class="text-lg font-normal">{job.employer}</div>
+            <div class="text-lg font-normal">{job.title}</div>
+            <br>
+            <div class="text-lg font-semibold">{job.location}</div>
+            <div class="text-lg font-semibold">USD {humanize.formatNumber(job.minAnnualCompensation)} - USD {humanize.formatNumber(job.maxAnnualCompensation)}</div>
+            <br>
+            <div>{job.description.slice(0, 150)}...</div>
+            <br>
+            <div class="flex justify-end">
+                <a class="btn btn-outline btn-accent" href="./jobs/{job.id}">View</a>
+            </div>
+        </div>
+    {/each}
+</div>

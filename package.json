@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"daisyui": "^2.49.0"
+		"daisyui": "^2.49.0",
+		"humanize-plus": "^1.8.2"
 	}
 }
