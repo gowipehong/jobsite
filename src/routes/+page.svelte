@@ -1,17 +1,8 @@
 <script>
   import "../app.css"
   import humanize from 'humanize-plus'
-  
   export let data
 </script>
-
-<div class="flex justify-between m-3">
-    <button class="btn btn-outline btn-info w-30 normal-case">NEXT Jobs DB</button>
-    <div>
-        <a class="btn btn-outline btn-info mr-3 normal-case" href="/users/new">Post a Job</a>
-        <button class="btn btn-outline btn-info normal-case">Log In</button>
-    </div>
-</div>
 
 <h1 class="text-center text-xl font-bold mb-10">Find Your Next Job</h1>
 
