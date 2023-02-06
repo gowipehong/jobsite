@@ -2,6 +2,7 @@
 	import '../../app.css'
 	import { goto } from '$app/navigation'
 	import { authenticateUser } from '../../utils/auth.js'
+	let loggingIn = false
 
 	async function letUserLogIn() {
 		goto('/jobs/new')
@@ -9,6 +10,7 @@
 
 	async function checkUser(e) {
 		e.preventDefault()
+		loggingIn = true
 
 		const userInfo = {
 			identity: e.target['username'].value,
@@ -18,18 +20,13 @@
 		const ress = await authenticateUser(userInfo.identity, userInfo.password)
 		if (ress.success) {
 			letUserLogIn()
-		}  
+			loggingIn = false
+		}  else {
+		loggingIn = false
+		errorStatus.set(true)
+	}
 }
 </script>
-
-{#if $errorStatus}
-<div class="alert alert-error shadow-lg">
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    <span>Wrong username/password! </span>
-  </div>
-</div>
-{/if}
 
 <div class="flex flex-col justify-center items-center text-xl m-10">
 	<div>Welcome to log in page</div>
