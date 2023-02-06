@@ -1,4 +1,5 @@
 import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public'
+import { validToken } from "../utils/auth"
 
 export async function load ({fetch}){
   if(await validToken()){
