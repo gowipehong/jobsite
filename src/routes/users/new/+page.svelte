@@ -1,6 +1,6 @@
 <script>
-  import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-  let formErrors = {};
+  import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public'
+  let formErrors = {}
 
   async function postSignUp() {
     console.log("to be implemented")

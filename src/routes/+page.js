@@ -1,6 +1,10 @@
 import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public'
 
 export async function load ({fetch}){
+  if(await validToken()){
+    isLoggedOn.set(true)
+  }
+
   const resp = await fetch (PUBLIC_BACKEND_BASE_URL + '/api/collections/jobs/records')
   
   const res = await resp.json()
