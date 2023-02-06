@@ -16,7 +16,7 @@
       {/if}
   </div>
 
-  <div class="flex flex-row w-full mt-8">
+  <div class="flex flex-col md:flex-row w-full mt-8">
       <div class="basis-2/3 prose max-w-none w-full">
           <h2 class="text-xl font-thin">Description</h2>
           <SvelteMarkdown source={data.job.description} />
@@ -27,7 +27,7 @@
           <h2 class="text-xl font-thin">How to Apply?</h2>
           <p>{data.job.applicationInstructions}</p>
       </div>
-      <div class="basis-1/3 ml-4">
+      <div class="basis-1/3 md:ml-4 mt-6 md:mt-0">
           <h2 class="text-xl font-thin">Location</h2>
           <p>{data.job.location}</p>
           <div class="mt-6" />

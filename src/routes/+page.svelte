@@ -8,7 +8,7 @@
 
 <div class="overflow-x-auto w-full flex flex-col flex-wrap content-center md:flex-row justify-evenly">
   {#each data.jobs as job}
-      <div class="border rounded-xl p-5 m-5 w-1/4">
+      <div class="border rounded-xl p-5 m-5 w-3/4 md:w-1/4">
           <div class="text-lg font-normal">{job.employer}</div>
           <div class="text-lg font-normal">{job.title}</div>
           <br>
