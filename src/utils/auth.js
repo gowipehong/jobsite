@@ -1,5 +1,5 @@
 import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-import {writable} from 'svelte/store'
+import { writable } from 'svelte/store'
 
 export const isLoggedOn = writable(false)
 export const errorStatus = writable(false)
