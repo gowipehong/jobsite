@@ -4,7 +4,7 @@ import { validToken } from '../../../utils/auth.js'
 
 export async function load({ fetch, params }) {
 
-  if(await validToken()){
+  if (await validToken()) {
     isLoggedOn.set(true)
   }
 

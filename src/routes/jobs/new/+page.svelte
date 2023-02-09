@@ -1,8 +1,9 @@
 <script>
-	import '../../../app.css';
 	import { goto } from '$app/navigation';
 	import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
 	import { getUserId } from '../../../utils/auth';
+
+	let formErrors = {};
 
 	async function postNewJob(e) {
 		e.preventDefault();
@@ -27,9 +28,14 @@
 			},
 			body: JSON.stringify(newJobData)
 		});
+
 		const res = await resp.json();
+
 		if (resp.status == 200) {
 			goto(`/jobs/${res.id}`);
+		} else {
+			formErrors = res.data;
+			console.log(res);
 		}
 	}
 </script>
@@ -46,8 +52,12 @@
 				id="job"
 				name="job-title"
 				placeholder="E-Sport Player"
-				required
 			/>
+			{#if 'title' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500">{formErrors['title'].message}</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -60,9 +70,15 @@
 				id="min"
 				name="min-annual"
 				placeholder="10000"
-				required
 			/>
 			<div class="text-xs mt-1">USD</div>
+			{#if 'minAnnualCompensation' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500"
+						>{formErrors['minAnnualCompensation'].message}</span
+					>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -75,9 +91,15 @@
 				id="max"
 				name="max-annual"
 				placeholder="200000"
-				required
 			/>
 			<div class="text-xs mt-1">USD</div>
+			{#if 'maxAnnualCompensation' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500"
+						>{formErrors['maxAnnualCompensation'].message}</span
+					>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -90,8 +112,12 @@
 				id="company"
 				name="company"
 				placeholder="e.g. Sentinel"
-				required
 			/>
+			{#if 'employer' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500">{formErrors['employer'].message}</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -104,8 +130,12 @@
 				id="location"
 				name="location"
 				placeholder="e.g. US"
-				required
 			/>
+			{#if 'location' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500">{formErrors['location'].message}</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -117,8 +147,12 @@
 				id="description"
 				name="description"
 				placeholder=""
-				required
 			/>
+			{#if 'description' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500">{formErrors['description'].message}</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -130,8 +164,12 @@
 				id="requirements"
 				name="requirements"
 				placeholder=""
-				required
 			/>
+			{#if 'requirements' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500">{formErrors['requirements'].message}</span>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control mb-5">
@@ -143,8 +181,14 @@
 				id="applicationInstructions"
 				name="applicationInstructions"
 				placeholder=""
-				required
 			/>
+			{#if 'applicationInstructions' in formErrors}
+				<label class="text-center pb-2 text-lg md:label" for="title">
+					<span class="label-text-alt text-red-500"
+						>{formErrors['applicationInstructions'].message}</span
+					>
+				</label>
+			{/if}
 		</div>
 
 		<div class="form-control w-full mt-8">

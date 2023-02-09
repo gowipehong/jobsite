@@ -1,5 +1,4 @@
 <script>
-	import '../../../../app.css';
 	import { goto } from '$app/navigation';
 	import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
 	import { getUserId, getTokenFromLocalStorage } from '../../../../utils/auth';
@@ -27,7 +26,7 @@
 				mode: 'cors',
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': getTokenFromLocalStorage()
+					Authorization: getTokenFromLocalStorage()
 				},
 				body: JSON.stringify(updatedData)
 			}
