@@ -12,7 +12,7 @@ export async function load({ fetch, params }) {
   const res = await resp.json()
   if (resp.status == 200) {
     if (res.user != getUserId()) {
-      throw redirect(301, '/users/new')
+      throw redirect(301, '/')
     }
 
     return {
