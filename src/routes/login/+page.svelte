@@ -1,8 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { authenticateUser } from '../../utils/auth.js';
-	import { errorStatus } from '../../utils/auth.js';
-	import { afterNavigate } from '$app/navigation';
+	import { alerts } from '../../utils/alert.js';
 
 	let loggingIn = false;
 
@@ -15,41 +14,20 @@
 			password: e.target['password'].value
 		};
 
-		const ress = await authenticateUser(userInfo.identity, userInfo.password);
+		const res = await authenticateUser(userInfo.identity, userInfo.password);
 
-		if (ress.success) {
+		if (res.success) {
 			goto('/jobs/new');
 		} else {
-			errorStatus.set(true);
+			loggingIn = false
+			alerts.setAlert('Wrong username / password', 'alert-error')
+			setTimeout(() => alerts.resetAlert(), 1000)
 		}
 
 		loggingIn = false;
 	}
 
-	afterNavigate(() => errorStatus.set(false));
 </script>
-
-{#if $errorStatus}
-	<div class="flex justify-center">
-		<div class="alert alert-error shadow-lg w-3/4">
-			<div>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="stroke-current flex-shrink-0 h-6 w-6"
-					fill="none"
-					viewBox="0 0 24 24"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-					/></svg
-				>
-				<span>Wrong username/password! </span>
-			</div>
-		</div>
-	</div>
-{/if}
 
 <div class="flex flex-col justify-center items-center text-xl m-10">
 	<div>Welcome to log in page</div>

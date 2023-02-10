@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import Alerts from './components/Alerts.svelte'
 	import { goto } from '$app/navigation';
 	import { isLoggedOn, logOut } from '../utils/auth.js';
 	import Theme from './components/Theme.svelte';
@@ -43,7 +44,7 @@
 					>
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 					<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-						<li><a class="btn btn-outline btn-info normal-case mb-3" href="/users/new">Post a Job</a></li>
+						<li><a class="btn btn-outline btn-info normal-case mb-3" href="/jobs/new">Post a Job</a></li>
 						<li>
 							{#if $isLoggedOn}
 								<button class="btn btn-outline btn-info normal-case" on:click={loggedOut}
@@ -60,7 +61,7 @@
 		<div class="hidden md:block">
 			<a
 				class=" btn btn-outline btn-info md:mr-3 normal-case mb-3 md:mb-0 md:ml-5"
-				href="/users/new">Post a Job</a
+				href="/jobs/new">Post a Job</a
 			>
 			{#if $isLoggedOn}
 				<button class="btn btn-outline btn-info normal-case" on:click={loggedOut}>Log Out</button>
@@ -70,4 +71,5 @@
 		</div>
 	</div>
 </div>
+<Alerts/>
 <slot />
