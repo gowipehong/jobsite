@@ -3,6 +3,6 @@ import { validToken } from "../../../utils/auth.js"
 
 export async function load() {
   if (await validToken()) {
-    throw redirect(301, '/')
+    throw redirect(302, '/')
   }
 }

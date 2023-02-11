@@ -5,6 +5,6 @@ import { alerts } from "../../../utils/alert.js"
 export async function load() {
   if (!(await validToken())) {
     alerts.setAlert('Please Sign Up!', 'alert-warning')
-    throw redirect(301, '/users/new')
+    throw redirect(302, '/users/new')
   }
 }
